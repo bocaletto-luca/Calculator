@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator-JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS from CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">Calculator-JS</h1>
+    
+    <!-- Usage instructions -->
+    <div class="alert alert-info" role="alert">
+      <strong>Usage Instructions:</strong>
+      <ul class="mb-0">
+        <li>You can use the mouse by clicking on the buttons, or use your keyboard to type numbers and operators.</li>
+        <li>Operations available: basic (+, −, ×, ÷) and scientific functions (sin, cos, tan, log, ln, √, exponentiation using ^).</li>
+        <li>Press <code>Enter</code> or click the "=" button to evaluate the expression.</li>
+        <li>Press <code>Backspace</code> to delete the last character, or <code>Escape</code> to clear (AC).</li>
+      </ul>
+    </div>
+    
+    <div class="card shadow-sm calculator-card mx-auto">
+      <div class="card-body">
+        <!-- Display area -->
+        <div id="display" class="form-control text-end fs-3 mb-3" readonly>0</div>
+        
+        <!-- Button Grid -->
+        <!-- Row 1: AC, DEL, (, ) -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-danger" data-value="AC">AC</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-warning" data-value="DEL">DEL</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="(">(</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value=")">)</button>
+          </div>
+        </div>
+        
+        <!-- Row 2: sin, cos, tan, ÷ -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="sin(">sin</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="cos(">cos</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="tan(">tan</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="÷">÷</button>
+          </div>
+        </div>
+        
+        <!-- Row 3: log, ln, √, × -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="log(">log</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="ln(">ln</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="√(">√</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="×">×</button>
+          </div>
+        </div>
+        
+        <!-- Row 4: 7, 8, 9, − -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="7">7</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="8">8</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="9">9</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="−">−</button>
+          </div>
+        </div>
+        
+        <!-- Row 5: 4, 5, 6, + -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="4">4</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="5">5</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="6">6</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="+">+</button>
+          </div>
+        </div>
+        
+        <!-- Row 6: 1, 2, 3, x^y -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="1">1</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="2">2</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="3">3</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-secondary" data-value="^">x^y</button>
+          </div>
+        </div>
+        
+        <!-- Row 7: 0, ., π, = -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="0">0</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value=".">.</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-light" data-value="π">π</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-calculator btn-success" data-value="=">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JavaScript (Calculator-JS logic) -->
+  <script src="calculator.js"></script>
+  
+  <!-- Detailed Usage Instructions -->
+<div class="container my-4">
+  <div class="card">
+    <div class="card-header">
+      <h4>Calculator Functions Help</h4>
+    </div>
+    <div class="card-body">
+      <p>This calculator supports both basic and scientific operations. Below is a detailed guide on how to use each button:</p>
+      <ul>
+        <li>
+          <strong>AC:</strong> Clears the entire expression.
+        </li>
+        <li>
+          <strong>DEL:</strong> Deletes the last character from the current expression.
+        </li>
+        <li>
+          <strong>( and ):</strong> Use parentheses to group parts of your expression. For example, <code>(3+2)*5</code> multiplies the sum of 3 and 2 by 5.
+        </li>
+        <li>
+          <strong>sin(, cos(, tan(:</strong> These buttons insert the corresponding trigonometric function along with an opening parenthesis. <em>Note:</em> Enter the angle in radians. For example, <code>sin(1.57)</code> approximates 1.0.
+        </li>
+        <li>
+          <strong>log(:</strong> Inserts the base‑10 logarithm function. For example, <code>log(100)</code> returns 2.
+        </li>
+        <li>
+          <strong>ln(:</strong> Inserts the natural logarithm function. For example, <code>ln(2.7183)</code> returns approximately 1.
+        </li>
+        <li>
+          <strong>√(:</strong> Inserts the square root function. For example, <code>√(16)</code> returns 4.
+        </li>
+        <li>
+          <strong>^ (x^y):</strong> This button is used for exponentiation. For example, entering <code>2^3</code> computes as 2 raised to the power of 3, i.e. 8.
+        </li>
+        <li>
+          <strong>÷, ×, −, +:</strong> These buttons represent division, multiplication, subtraction, and addition respectively. Be sure to use them between numbers or expressions.
+        </li>
+        <li>
+          <strong>π:</strong> Inserts the constant π (pi). It is replaced with <code>Math.PI</code> during calculation.
+        </li>
+        <li>
+          <strong>= or Enter:</strong> Evaluates the expression. You can click the "=" button or press the Enter key.
+        </li>
+        <li>
+          <strong>Keyboard Shortcuts:</strong> You can use your keyboard as well:
+          <ul>
+            <li><strong>Enter:</strong> Evaluate expression (same as "=").</li>
+            <li><strong>Backspace:</strong> Delete the last character (same as "DEL").</li>
+            <li><strong>Escape:</strong> Clear the expression (same as "AC").</li>
+          </ul>
+        </li>
+      </ul>
+      <p><em>Important:</em> Always close your functions with the corresponding ")".
+         For example, if you press <code>sin(</code>, make sure to complete it by entering an angle followed by a close parenthesis: <code>sin(1.57)</code>.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
