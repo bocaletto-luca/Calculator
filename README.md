@@ -1,4 +1,5 @@
 # Calculator-JS
+#### Author: Bocaletto Luca
 
 Calculator-JS is a responsive, feature-rich web calculator that supports both basic and scientific operations. Users can compute arithmetic, trigonometric functions, logarithms, square roots, and exponentiation operations using a user-friendly interface. The app supports both mouse clicks and keyboard input.
 
@@ -12,6 +13,7 @@ Calculator-JS is a responsive, feature-rich web calculator that supports both ba
 [![Web App](https://img.shields.io/badge/Web%20App-Yes-orange?style=flat-square)]()
 ![Bootstrap](https://img.shields.io/badge/Style-Bootstrap-7952B3.svg)
 
+[![Test Online](https://img.shields.io/badge/Test%20Online-Click%20Here-brightgreen?style=for-the-badge)](https://bocaletto-luca.github.io/Calculator/)
 ---
 
 ## Table of Contents
