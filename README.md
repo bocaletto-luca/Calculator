@@ -1,4 +1,4 @@
-# Calculator-JS
+# Calculator - JS | Web App
 #### Author: Bocaletto Luca
 
 Calculator-JS is a responsive, feature-rich web calculator that supports both basic and scientific operations. Users can compute arithmetic, trigonometric functions, logarithms, square roots, and exponentiation operations using a user-friendly interface. The app supports both mouse clicks and keyboard input.
